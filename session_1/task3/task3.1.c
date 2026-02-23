@@ -46,6 +46,8 @@
 int main(void) {
     float units;
     float bill = 0.0;
+    float slab_unit1;
+    float slab_unit2;
     int customerType;
 
     printf("Enter units consumed: ");
@@ -58,16 +60,34 @@ int main(void) {
 	// complete your code here
     if (units <= 100) {
         bill = units * 2.0;
-		// to do
+    }
+	if (units <= 300) {
+        bill = 100 * 2.0;
+        slab_unit1 = units - 100;
+        bill = bill + (slab_unit1*3.5);
+    }
+    if (units > 300) {
+        bill = 100 * 2.0;
+        slab_unit1 = units - 100;
+        bill = bill + (slab_unit1*3.5);
+        slab_unit2 = units - 100;
+        bill = bill + (slab_unit2*5);
     }
 
     /* subtask 2: apply surcharge based on customer type */
 	// complete your code here
     switch (customerType) {
         case 1:
-            // to do
+            printf("Domestic customer selected");
 			break;
-
+        case 2:
+            bill = bill*1.1;
+            printf("Commercial customer selected");
+            break;
+        case 3:
+            bill = bill*1.2;
+            printf("Industrial customer selected");
+            break;
         default:
             printf("Invalid customer type\n");
             return 1;
